@@ -1,0 +1,47 @@
+//Textbox = name [ SimplaTextBox1 ] 
+
+
+  private void button1_Click(object sender, EventArgs e) // Button locked 
+        {
+            {
+                try
+                {
+                    if (SimplaTextBox1.Text == "")
+                    {
+                        MessageBox.Show("حدد مسار المجلد", "تنبيه");
+                    }
+                    else
+                    {
+                        FileSystemSecurity fs = File.GetAccessControl(SimplaTextBox1.Text);
+                        fs.AddAccessRule(new FileSystemAccessRule(Environment.UserName, FileSystemRights.FullControl, AccessControlType.Deny));
+                        File.SetAccessControl(SimplaTextBox1.Text, (FileSecurity)fs);
+                        MessageBox.Show("تم حماية المجلد ");
+                        // Application.Exit()
+                    }
+                }
+                catch (Exception ex)
+                {
+//-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+//
+
+private void button2_Click(object sender, EventArgs e)
+        {
+            {
+                try
+                {
+                    if (SimplaTextBox1.Text == "")
+                    {
+                        MessageBox.Show("حدد مسار المجلد");
+                    }
+                    else
+                    {
+                        FileSystemSecurity fs = File.GetAccessControl(SimplaTextBox1.Text);
+                        fs.RemoveAccessRule(new FileSystemAccessRule(Environment.UserName, FileSystemRights.FullControl, AccessControlType.Deny));
+                        File.SetAccessControl(SimplaTextBox1.Text, (FileSecurity)fs);
+                        MessageBox.Show("تم الغاء الحمايه ");
+                        // Application.Exit()
+                    }
+                }
+                catch (Exception ex)
+                {
+                }
+            }
